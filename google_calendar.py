@@ -1,7 +1,7 @@
 from composio_openai import ComposioToolSet, Action
 from litellm import completion
 
-composio_key = "x47gotu8ung46fm3gfsncx"
+composio_key = ""  # Replace with your actual Composio API key
 
 
 
