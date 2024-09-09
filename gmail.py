@@ -1,12 +1,13 @@
+
 from composio_openai import ComposioToolSet, Action
 from litellm import completion
 import os
 import json
 
-composio_key = "x47gotu8ung46fm3gfsncx"  # Replace with your actual Composio API key
+composio_key = ""  # Replace with your actual Composio API key
 composio_toolset = ComposioToolSet(api_key=composio_key)
-connected_account_id = "0e24a09d-04c3-433c-8310-74ad6946776d"  # Connection ID
-entity = "Qasim"  # Entity name
+connected_account_id = ""  # Connection ID
+entity = ""  # Entity name
 # Create a trigger listener
 listener = composio_toolset.create_trigger_listener()
 
@@ -46,7 +47,7 @@ def callback_function(event):
 
             # If the arguments are in string format, convert them to a dictionary
             if isinstance(arguments, str):
-                
+
                 arguments = json.loads(arguments)
 
             # Extract the necessary fields from arguments
@@ -56,7 +57,7 @@ def callback_function(event):
 
             # Construct the email message
             email_data = {
-                "to": recipient,
+                "recipient_email": recipient,
                 "subject": subject,
                 "body": body,
             }
