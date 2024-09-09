@@ -61,7 +61,7 @@ def callback_function(event):
             }
 
             # Execute the GMAIL_SEND_EMAIL tool
-            result = composio_toolset.get_tools(Action.GMAIL_SEND_EMAIL, email_data)
+            result = composio_toolset.execute_action(Action.GMAIL_SEND_EMAIL, email_data)
             print(f"Email sent: {result}")
         else:
             print("No tool calls found in the GPT response.")
