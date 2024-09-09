@@ -3,9 +3,10 @@ from litellm import completion
 import os
 import json
 
-composio_key = ""  # Replace with your actual Composio API key
+composio_key = "x47gotu8ung46fm3gfsncx"  # Replace with your actual Composio API key
 composio_toolset = ComposioToolSet(api_key=composio_key)
-
+connected_account_id = "0e24a09d-04c3-433c-8310-74ad6946776d"  # Connection ID
+entity = "Qasim"  # Entity name
 # Create a trigger listener
 listener = composio_toolset.create_trigger_listener()
 
@@ -61,7 +62,9 @@ def callback_function(event):
             }
 
             # Execute the GMAIL_SEND_EMAIL tool
-            result = composio_toolset.execute_action(Action.GMAIL_SEND_EMAIL, email_data)
+            result = composio_toolset.execute_action(Action.GMAIL_SEND_EMAIL, email_data ,
+                        connected_account_id=connected_account_id,
+                        entity_id=entity)
             print(f"Email sent: {result}")
         else:
             print("No tool calls found in the GPT response.")
@@ -74,4 +77,3 @@ try:
     listener.listen()
 except Exception as e:
     print(f"An error occurred while listening: {e}")
-
